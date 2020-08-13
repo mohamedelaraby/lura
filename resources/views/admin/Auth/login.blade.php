@@ -20,15 +20,10 @@
                         </h6>
                     </div>
 
-                    <!-- begin alet section-->
-                    <div class="row mr-2 ml-2">
-                        <button type="text" class="btn btn-lg btn-block btn-outline-danger mb-2"
-                                id="type-error">
-                                {{ trans('auth.enter-error') }}
-                        </button>
-                    </div>
-                    <!-- end alet section-->
-
+                    {{--  Start Error Messages  --}}
+                    @include('admin.includes.alerts.errors')
+                    @include('admin.includes.alerts.success')
+                    {{--  End Error Messages  --}} 
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form-horizontal form-simple" action="{{ route('admin.login') }}" method="post"

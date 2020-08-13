@@ -14,12 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], function () {
-    Route::get('/', 'AdminController@dashboard');
 
     // Admin Authuntication
     Route::get('login', 'LoginController@index');
     Route::post('login', 'LoginController@login')->name('admin.login');
 });
+
+
+Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'auth:admin'], function () {
+    Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
+});
+
 
 
 
