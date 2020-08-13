@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="rtl">
+@if(app()->getLocale() =='ar')
+<html class="loading" lang="ar" data-textdirection="rtl">
+@else
+<html class="loading" lang="en" data-textdirection="ltr">
+@endif
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

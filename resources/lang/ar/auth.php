@@ -14,6 +14,14 @@ return [
     */
 
     'login' => 'صفحة الدخول',
-    'enter-admin-panel' => 'الدخول للوحة التحكم',
+    'enter_admin_panel' => 'الدخول للوحة التحكم',
+    'email-required' => 'البريد الالكتروني مطلوب',
+    'email-email' => 'ادخل عنوان  بريد الكتروني صالح',
+    'enter-email' => 'أدخل البريد الالكتروني',
+    'password-required' => 'كلمة المرور مطلوبة',
+    'enter-password' => 'أدخل كلمة المرور',
+    'enter-error' => 'هناك خطا في بيانات الدحول',
+    'rememberme' => 'تذكر دخولي',
+    'signin' => 'دخول',
 
 ];

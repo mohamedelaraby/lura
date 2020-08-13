@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group([ 'namespace'=> 'Manage\Admin', 'middleware'=>'guest:admin'], function () {
-
-    Route::get('/','AdminController@dashboard');
+Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], function () {
+    Route::get('/', 'AdminController@dashboard');
 
     // Admin Authuntication
-    Route::get('login','LoginController@index');
+    Route::get('login', 'LoginController@index');
+    Route::post('login', 'LoginController@login')->name('admin.login');
 });
 
 
 
+//  Translation
+Route::get('locale/{locale}','TransController@locale');
