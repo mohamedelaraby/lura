@@ -2,17 +2,9 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
 
+
+    /** Start Admin Auth */
     'login' => 'صفحة الدخول',
     'enter_admin_panel' => 'الدخول للوحة التحكم',
     'email-required' => 'البريد الالكتروني مطلوب',
@@ -23,5 +15,20 @@ return [
     'data-errors' => 'هناك خطا في بيانات الدحول',
     'rememberme' => 'تذكر دخولي',
     'signin' => 'دخول',
+    /** End Admin Auth */
+
+
+    /** Start Languages */
+    'required_field' => 'هذا الحقل مطلوب',
+    'incorrect_inputs' => 'القيم المدخلة غير صحيحة',
+    'string_name' => 'الحقل لابد ان يكون احرف',
+    'string_max' => 'اسم اللغة لا يزيد عن 100 حرف',
+    'string_max_abbr' => 'الاختصار لا يزيد عن 10 حرف',
+    'language_add_success' => 'تم إضافة اللغة بنجاح',
+    'language_add_failed' => 'هناك خطأ ما, يرجي إعادة المحاولة',
+    'enabled' => 'مفعل',
+    'disabled' => 'غير مفعل',
+
+    /** End Languages */
 
 ];

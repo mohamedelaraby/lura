@@ -47,6 +47,8 @@ return [
     // Interactive Buttons
     'edit' => 'تعديل',
     'delete' => 'حذف',
+    'back' => 'تراجع',
+    'save' => 'حفظ',
 
 
 

@@ -44,5 +44,18 @@ class Language extends Model
 
     /*****[ End Model Scopes ] ******/
 
+    /*****[ Start attributes ] ******/
+
+    /**
+     *  Change Active attributes name
+     *
+     *  @return void
+     */
+    public function getActiveAttribute($value){
+        return $value == 1 ? trans('auth.enabled') : trans('auth.disabled');
+    }
+    /*****[ End attributes ] ******/
+
+
 
 }

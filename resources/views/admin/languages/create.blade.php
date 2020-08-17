@@ -42,20 +42,19 @@
                             @include('admin.includes.alerts.messages')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form" action="" method="POST"
+                                    <form class="form" action="{{ route('admin.languages.store') }}" method="POST"
                                           enctype="multipart/form-data">
                                         <div class="form-body">
 
                                             @include('admin.languages.form')
 
-
                                         <div class="form-actions">
                                             <button type="button" class="btn btn-warning mr-1"
                                                     onclick="history.back();">
-                                                <i class="ft-x"></i> تراجع
+                                                <i class="ft-x"></i> {{ trans('admin.back') }}
                                             </button>
                                             <button type="submit" class="btn btn-primary">
-                                                <i class="la la-check-square-o"></i> حفظ
+                                                <i class="la la-check-square-o"></i> {{ trans('admin.save') }}
                                             </button>
                                         </div>
                                     </form>

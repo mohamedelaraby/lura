@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], fun
 });
 
 
-Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], function () {
+Route::group(['namespace' => 'Manage\Admin'], function () {
     Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
 
     ##########################[ Begin Language routes ]########################

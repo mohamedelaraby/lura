@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Manage\Admin\Language;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LanguageRequest;
 use App\Models\Language;
+use Exception;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
@@ -19,9 +21,9 @@ class LanguageController extends Controller
     }
 
     /**
-     *  Display all languages
+     *  Display create language form
      *
-     * @return Response
+     * @return void
      */
     public function create(){
        $language = new Language();
@@ -29,11 +31,26 @@ class LanguageController extends Controller
     }
 
     /**
-     *  Display all languages
+     *  Create new language
      *
+     * @param mixed $request
      * @return Response
      */
-    public function store(){
-      
+    public function store(LanguageRequest $request ){
+        // Create new language
+        try{
+            Language::create($request->except(['_token']));
+
+            show_message('msg',trans('auth.language_add_success'));
+
+            return redirect()->route('admin.languages');
+        } catch (Exception $exception){
+
+            show_message('msg',trans('auth.language_add_failed'));
+
+            return redirect()->route('admin.languages');
+        }
+        //return to language page
+        // Handle errors and exceptiona
     }
 }
