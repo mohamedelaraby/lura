@@ -21,9 +21,9 @@
                     </div>
 
                     {{--  Start Error Messages  --}}
-                    @include('admin.includes.alerts.errors')
-                    @include('admin.includes.alerts.success')
-                    {{--  End Error Messages  --}} 
+                        @include('admin.includes.alerts.messages')
+
+                    {{--  End Error Messages  --}}
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form-horizontal form-simple" action="{{ route('admin.login') }}" method="post"

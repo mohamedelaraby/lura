@@ -20,7 +20,7 @@ return [
     'enter-email' => 'أدخل البريد الالكتروني',
     'password-required' => 'كلمة المرور مطلوبة',
     'enter-password' => 'أدخل كلمة المرور',
-    'enter-error' => 'هناك خطا في بيانات الدحول',
+    'data-errors' => 'هناك خطا في بيانات الدحول',
     'rememberme' => 'تذكر دخولي',
     'signin' => 'دخول',
 

@@ -27,6 +27,33 @@ if (!function_exists('admin_url')) {
 //     }
 // }
 
+/***** [  Start Global queries ] */
+
+
+/**
+ *  Count Languages numbers
+ *  @return Integer
+ */
+    if (!function_exists('languages_count')) {
+        function languages_count()
+        {
+            return App\Models\Language::count();
+        }
+    }
+
+/**
+ *  Get Main Category number
+ *  @return Integer
+ */
+    if (!function_exists('main_category_count')) {
+        function main_category_count()
+        {
+            return App\Models\MainCategory::count();
+        }
+    }
+/***** [  End Global queries ] */
+
+
 /**
  *  Get last settings record
  *  @return Response
@@ -36,7 +63,6 @@ if (!function_exists('admin_url')) {
 //     {
 //         return Settings::orderBy('id', 'desc')->first();
 //     }
-// }
 
 // /**
 //  *  Country name
@@ -98,7 +124,7 @@ if (!function_exists('ui_url')) {
 if (!function_exists('active_menu')) {
    function active_menu($link){
        if(preg_match('/'.$link.'/i', Request::segment(2))){
-           return ['menu-open','display:block'];
+           return ['open','display:block'];
        } else {
            return ['',''];
        }
@@ -210,11 +236,23 @@ if(!function_exists('validate_image')){
             return 'image|required|mimes:'.$extension;
         }
     }
+
+
+    //[[[[[[[[ Validate Helper Functions]]]]]]]]
+
 }
-
-
-//[[[[[[[[ Validate Helper Functions]]]]]]]]
-
+/**
+ *  Show session messages
+ *
+ *  @param mixed $msg_type
+ *  @param mixed $msg
+ *  @return string
+ */
+if(!function_exists('show_message')){
+    function show_message($msg_type,$msg){
+     return  session()->flash($msg_type,$msg);
+    }
+}
 
 
 

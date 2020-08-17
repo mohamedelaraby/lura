@@ -34,6 +34,11 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // Routing model binding
+        Route::model('user', App\User::class);
+        Route::model('admin', App\Models\Admin::class);
+        Route::model('language', App\Models\Language::class);
     }
 
     /**
@@ -61,7 +66,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware(['web','Trans',])
+        Route::middleware(['web','Trans'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
@@ -75,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapAdminRoutes()
     {
-        Route::middleware(['web','Trans',])
+        Route::middleware(['web','Trans'])
             ->prefix('admin')
             ->namespace($this->namespace)
             ->group(base_path('routes/admin.php'));

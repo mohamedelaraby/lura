@@ -6,23 +6,35 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
+/**
+ *  Number of pagintaion records loads
+ *  @param integer PAGINATION_COUNT
+ */
+define('PAGINATION_COUNT',10);
 
 Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], function () {
 
     // Admin Authuntication
-    Route::get('login', 'LoginController@index');
-    Route::post('login', 'LoginController@login')->name('admin.login');
+    Route::get('login', 'AdminController@index')->name('admin.get_login');
+    Route::post('login', 'AdminController@login')->name('admin.login');
 });
 
 
-Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'auth:admin'], function () {
+Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], function () {
     Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
+
+    ##########################[ Begin Language routes ]########################
+
+    Route::group(['prefix' => 'language','namespace' =>'Language'], function(){
+
+        Route::get('/','LanguageController@index')->name('admin.languages');
+        Route::get('create','LanguageController@create')->name('admin.languages.create');
+        Route::post('store','LanguageController@store')->name('admin.languages.store');
+
+    });
+
+    ##########################[ End Language routes ]#########################
 });
 
 
