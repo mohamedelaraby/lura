@@ -46,11 +46,78 @@ class LanguageController extends Controller
             return redirect()->route('admin.languages');
         } catch (Exception $exception){
 
-            show_message('msg',trans('auth.language_add_failed'));
+            show_message('error',trans('auth.language_add_failed'));
 
             return redirect()->route('admin.languages');
         }
-        //return to language page
-        // Handle errors and exceptiona
     }
+
+
+    /**
+     *  Display update element view
+     *
+     *  @param  mixed $id
+     */
+    public function edit($id){
+        $language = Language::select()->find($id);
+        if(!$language){
+            show_message('error',trans('auth.language_not_found'));
+            return redirect()->route('admin.languages');
+        }
+
+
+
+        return view('admin.languages.edit',compact('language'));
+    }
+
+    /**
+     *  Update existing language
+     *
+     *  @param  Response $request
+     *  @param  mixed $id
+     */
+    public function update(LanguageRequest $request,$id){
+        try{
+            $language = Language::find($id);
+            if(!$language){
+                show_message('error',trans('auth.language_add_failed'));
+                return redirect()->route('admin.languages.edit',$id);
+            }
+
+        //Update language
+        $language->update($request->except("_token"));
+        show_message('msg',trans('auth.language_update_success'));
+        return redirect()->route('admin.languages');
+
+        } catch (Exception $exception){
+                show_message('error',trans('auth.language_add_failed'));
+                return redirect()->route('admin.languages');
+        }
+    }
+
+    /**
+     *  Delete existing language
+     *
+     *  @param  Response $request
+     *  @param  mixed $id
+     */
+    public function delete($id){
+        try{
+            $language = Language::find($id);
+            if(!$language){
+                show_message('error',trans('auth.language_delete_failed'));
+                return redirect()->route('admin.languages');
+            }
+
+        //Update language
+        $language->delete();
+        show_message('msg',trans('auth.language_delete_success'));
+        return redirect()->route('admin.languages');
+
+        } catch (Exception $exception){
+                show_message('error',trans('auth.language_add_failed'));
+                return redirect()->route('admin.languages');
+        }
+    }
+
 }

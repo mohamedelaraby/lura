@@ -6,13 +6,14 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title"> {{ trans('admin.languages') }} </h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">{{ trans('admin.dashboard') }}</a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ trans('admin.dashboard') }} </a>
                             </li>
-                            <li class="breadcrumb-item active">  {{ trans('admin.languages') }}
+                            <li class="breadcrumb-item active"><a href="{{route('admin.languages')}}"> {{ trans('admin.languages') }} </a>
+                            </li>
+                            <li class="breadcrumb-item"> {{ trans('admin.lang_edit') }}
                             </li>
                         </ol>
                     </div>
@@ -20,13 +21,13 @@
             </div>
         </div>
         <div class="content-body">
-            <!-- DOM - jQuery events table -->
-            <section id="dom">
-                <div class="row">
-                    <div class="col-12">
+            <!-- Basic form layout section start -->
+            <section id="basic-form-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"> {{ trans('admin.all_languages') }}</h4>
+                                <h4 class="card-title" id="basic-layout-form"> {{ trans('admin.lang_edit') }} </h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -38,66 +39,32 @@
                                     </ul>
                                 </div>
                             </div>
-
                             @include('admin.includes.alerts.messages')
-
-
                             <div class="card-content collapse show">
-                                <div class="card-body card-dashboard">
-                                    <table
-                                        class="table display nowrap table-striped table-bordered ">
-                                        <thead>
-                                        <tr>
-                                            <th> {{ trans('admin.lang_name') }}</th>
-                                            <th> {{ trans('admin.lang_abbr') }}</th>
-                                            <th> {{ trans('admin.lang_direction') }}</th>
-                                            <th> {{ trans('admin.lang_status') }}</th>
-                                            <th> {{ trans('admin.lang_options') }}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                                <div class="card-body">
+                                    <form class="form" action="{{ route('admin.languages.update',$language->id) }}" method="POST"
+                                          enctype="multipart/form-data">
+                                        <div class="form-body">
 
-                                            @isset($languages)
-                                            @foreach($languages as $language)
+                                            @include('admin.languages.form')
 
-
-                                                <tr>
-                                                    <td>{{ $language->name }} </td>
-                                                    <td>{{ $language->abbreviation }} </td>
-                                                    <td>{{ $language->direction }} </td>
-                                                    <td>{{ $language->active }} </td>
-
-                                                    <td>
-                                                        <div class="btn-group" role="group"
-                                                             aria-label="Basic example">
-                                                            <a href=""
-                                                               class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{ trans('admin.edit') }}</a>
-                                                            <button type="button"
-                                                                    value=""
-                                                                    onclick=""
-                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1"
-                                                                    data-toggle="modal"
-                                                                    data-target="#rotateInUpRight">
-                                                                    {{ trans('admin.delete') }}
-                                                            </button>
-
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                @endforeach
-                                                @endisset
-                                        </tbody>
-                                    </table>
-                                    <div class="justify-content-center d-flex">
-
-                                    </div>
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                <i class="ft-x"></i> {{ trans('admin.back') }}
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="la la-check-square-o"></i> {{ trans('admin.update') }}
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <!-- // Basic form layout section end -->
         </div>
     </div>
 </div>

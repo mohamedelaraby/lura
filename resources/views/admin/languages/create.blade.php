@@ -9,11 +9,11 @@
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية </a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ trans('admin.dashboard')}} </a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.languages')}}"> أللغات </a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.languages')}}"> {{ trans('admin.lang_create') }} </a>
                             </li>
-                            <li class="breadcrumb-item active">إضافة لغة
+                            <li class="breadcrumb-item active"> {{ trans('admin.lang_create') }}
                             </li>
                         </ol>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="basic-layout-form"> إضافة لغة </h4>
+                                <h4 class="card-title" id="basic-layout-form"> {{ trans('admin.lang_create') }} </h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">

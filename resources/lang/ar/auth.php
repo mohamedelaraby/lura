@@ -24,10 +24,13 @@ return [
     'string_name' => 'الحقل لابد ان يكون احرف',
     'string_max' => 'اسم اللغة لا يزيد عن 100 حرف',
     'string_max_abbr' => 'الاختصار لا يزيد عن 10 حرف',
-    'language_add_success' => 'تم إضافة اللغة بنجاح',
-    'language_add_failed' => 'هناك خطأ ما, يرجي إعادة المحاولة',
     'enabled' => 'مفعل',
     'disabled' => 'غير مفعل',
+    'language_add_success' => 'تم إضافة اللغة بنجاح',
+    'language_add_failed' => 'هناك خطأ ما, يرجي إعادة المحاولة',
+    'language_update_success' => 'تم تحديث اللغة بنجاح',
+    'language_delete_success' => 'تم حذف اللغة بنجاح',
+    'language_not_found' => 'هذه اللغة غير موجودة',
 
     /** End Languages */
 

@@ -27,6 +27,7 @@ return [
     'lang_status' => 'الحالة',
     'lang_options' => 'الاجراءات',
     'lang_create' => 'اضافة لغة',
+    'lang_edit' => 'تعديل اللغة',
 
     // Language form
     'lang_data' => 'بيانات اللغة',
@@ -49,6 +50,7 @@ return [
     'delete' => 'حذف',
     'back' => 'تراجع',
     'save' => 'حفظ',
+    'update' => 'تحديث',
 
 
 

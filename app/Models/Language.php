@@ -39,7 +39,7 @@ class Language extends Model
      * @return Response
      */
     public function scopeLanguageSelect($query){
-        return $query->select('abbreviation','name','direction','active');
+        return $query->select('id','abbreviation','name','direction','active');
     }
 
     /*****[ End Model Scopes ] ******/
@@ -51,8 +51,8 @@ class Language extends Model
      *
      *  @return void
      */
-    public function getActiveAttribute($value){
-        return $value == 1 ? trans('auth.enabled') : trans('auth.disabled');
+    public function getActive(){
+      return  $this->active  ? trans('auth.enabled') : trans('auth.disabled');
     }
     /*****[ End attributes ] ******/
 

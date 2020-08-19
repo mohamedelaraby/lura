@@ -31,8 +31,8 @@
             <label for="projectinput2"> {{  trans('admin.lang_form_direction') }} </label>
             <select name="direction" class="select2 form-control">
                 <optgroup label="{{trans('admin.lang_form_enter_direction') }} ">
-                    <option value="rtl">{{trans('admin.lang_form_rtl') }}</option>
-                    <option value="ltr">{{trans('admin.lang_form_ltr') }}</option>
+                    <option value="rtl" @if($language->direction == 'rtl') selected @endif</option>{{trans('admin.lang_form_rtl') }}</option>
+                    <option value="ltr" @if($language->direction == 'ltr') selected @endif>{{trans('admin.lang_form_ltr') }}</option>
                 </optgroup>
             </select>
         </div>
@@ -46,12 +46,13 @@
             <input type="checkbox" name="active" value="1"
                    id="switcheryColor4"
                    class="switchery" data-color="success"
-                   checked/>
+                   @if($language->active == 1) checked @endif
+                   />
             <label for="switcheryColor4"
                    class="card-title ml-1">{{trans('admin.lang_status') }} </label> <br>
             <span class="text-danger">{{$errors->has('active') ? $errors->first('active') : ''}}</span>
-
         </div>
     </div>
 </div>
 </div>
+
