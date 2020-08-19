@@ -22,7 +22,7 @@ class MainCategory extends Model
 
 
     /*****[ Start Model Scopes ] ******/
-    
+
     /**
      *  Find active categories
      *
@@ -33,6 +33,29 @@ class MainCategory extends Model
         return $query->where('active',1);
     }
 
+    /**
+     *  Select some attrebuties
+     *
+     *  @param mixed $query
+     * @return Response
+     */
+    public function scopeMainCategorySelection($query){
+        return $query->select('id','translation_lang','name','slug','photo','active');
+    }
+
     /*****[ End Model Scopes ] ******/
+
+
+      /*****[ Start attributes ] ******/
+
+    /**
+     *  Change Active attributes name
+     *
+     *  @return void
+     */
+    public function getActive(){
+        return  $this->active  ? trans('auth.enabled') : trans('auth.disabled');
+      }
+      /*****[ End attributes ] ******/
 
 }

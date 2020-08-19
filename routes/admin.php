@@ -36,8 +36,23 @@ Route::group(['namespace' => 'Manage\Admin'], function () {
         Route::get('delete/{id}','LanguageController@delete')->name('admin.languages.delete');
 
     });
-
     ##########################[ End Language routes ]#########################
+
+
+    ##########################[ Begin Main Category routes ]########################
+
+    Route::group(['prefix' => 'maincategory','namespace' =>'MainCategory'], function(){
+
+        Route::get('/','MainCategoryController@index')->name('admin.maincategory');
+        Route::get('create','MainCategoryController@create')->name('admin.maincategory.create');
+        Route::post('store','MainCategoryController@store')->name('admin.maincategory.store');
+        Route::get('edit/{id}','MainCategoryController@edit')->name('admin.maincategory.edit');
+        Route::post('update/{id}','MainCategoryController@update')->name('admin.maincategory.update');
+        Route::get('delete/{id}','MainCategoryController@delete')->name('admin.maincategory.delete');
+
+    });
+
+    ##########################[ End Main Category routes ]#########################
 });
 
 

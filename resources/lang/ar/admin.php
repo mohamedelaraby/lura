@@ -44,8 +44,15 @@ return [
 
     // main categories
     'main_categories' => 'الاقسام الرئيسية',
+    'maincategory_name' => 'اسم القسم',
+    'maincategory_lang' => 'لغة القسم',
+    'maincategory_status' => 'حالة القسم',
+
+
 
     // Interactive Buttons
+    'status' => 'الحالة',
+    'options' => 'الاجراءات',
     'edit' => 'تعديل',
     'delete' => 'حذف',
     'back' => 'تراجع',

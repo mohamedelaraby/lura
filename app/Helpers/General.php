@@ -3,29 +3,9 @@
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Settings;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
- /**
- *  Handle admin url prefix
- *  @var string |null $url
- *  @return URL
- */
-if (!function_exists('admin_url')) {
-    function admin_url($url = null)
-    {
-        return url('admin/'  . $url);
-    }
-}
 
-// /**
-//  *  Get UploadController location
-//  *  @return mixed
-//  */
-// if (!function_exists('up')) {
-//     function up()
-//     {
-//         return new \App\Http\Controllers\UploadController;
-//     }
-// }
 
 /***** [  Start Global queries ] */
 
@@ -38,6 +18,17 @@ if (!function_exists('admin_url')) {
         function languages_count()
         {
             return App\Models\Language::count();
+        }
+    }
+
+/**
+ *  Find all active languages
+ *  @return void
+ */
+    if (!function_exists('active_languages')) {
+        function active_languages()
+        {
+            return App\Models\Language::active()->LanguageSelect()->get();
         }
     }
 
@@ -55,29 +46,9 @@ if (!function_exists('admin_url')) {
 /***** [  End Global queries ] */
 
 
-/**
- *  Get last settings record
- *  @return Response
- */
-// if (!function_exists('settings')) {
-//     function settings()
-//     {
-//         return Settings::orderBy('id', 'desc')->first();
-//     }
-
-// /**
-//  *  Country name
-//  *  @return Response
-//  */
-// if (!function_exists('country_name')) {
-//     function country_name()
-//     {
-//         return Country::pluck('country_name_'.app()->getLocale(), 'id');
-//     }
-// }
 
  /**
- *  Get App locale langز
+ *  Get App locale lang
  *  @return session
  */
 if (!function_exists('locale')) {
@@ -91,6 +62,19 @@ if (!function_exists('locale')) {
 
     }
 }
+
+/**
+ *  Get default langugae
+ *  @return void
+ */
+if (!function_exists('default_language')) {
+    function default_language()
+    {
+       return Config::get('app.locale');
+
+    }
+}
+
 
  //[[[[[[[   UI Helper Functions  ]]]]]]]
 /**
