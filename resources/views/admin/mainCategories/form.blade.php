@@ -19,8 +19,8 @@
                 <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="projectinput1">   {{trans('admin.maincategory_form_name')}} -  {{ trans('languages.' . $lang->abbreviation) }}  </label>
-                                <input type="text" value="{{ old('abbreviation') ?? $lang->abbreviation}}" id="name"
+                                <label for="projectinput1">  {{trans('admin.maincategory_form_name')}} -  {{ trans('languages.' . $lang->abbreviation) }}  </label>
+                                <input type="text" value="" id="name"
                                     class="form-control"
                                     placeholder="{{trans('admin.maincategory_form_enter_name')}} "
                                     name="category[{{$index}}][name]">
@@ -51,7 +51,7 @@
                                 <input type="checkbox" name="category[{{$index}}][active]" value="1"
                                     id="switcheryColor4"
                                     class="switchery" data-color="success"
-                                    @if($mainCategory->active == 1) checked @endif
+                                    @if($lang->active == 1) checked @endif
                                     />
                                 <label for="switcheryColor4"
                                     class="card-title ml-1">  {{trans('admin.lang_status') }} - {{trans('languages.' . $lang->abbreviation)}} </label> <br>
