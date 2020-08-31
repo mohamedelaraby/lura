@@ -28,11 +28,10 @@
                         class="badge badge badge-danger badge-pill float-right mr-2">{{main_category_count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="#('admin.maincategories')}}"
+                    <li class="active"><a class="menu-item" href="{{route('admin.maincategory')}}"
                                           data-i18n="nav.dash.ecommerce"> {{ trans('admin.show_all') }}  </a>
                     </li>
-                    <li><a class="menu-item" href="#('admin.maincategories.create')}}" data-i18n="nav.dash.crypto">أضافة
-                             قسم جديد </a>
+                    <li><a class="menu-item" href="{{route('admin.maincategory.create')}}" data-i18n="nav.dash.crypto">{{trans('admin.maincategory_add')}} </a>
                     </li>
                 </ul>
             </li>

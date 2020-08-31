@@ -73,7 +73,7 @@
                                                                class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
                                                                {{ trans('admin.edit') }}
                                                             </a>
-                                                            <a href="{{ route('admin.maincategory.delete',$language->id) }}"
+                                                            <a href="{{ route('admin.maincategory.delete',$mainCategory->id) }}"
                                                                class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">
                                                                {{ trans('admin.delete') }}
                                                             </a>

@@ -12,7 +12,8 @@ class MainCategoryController extends Controller
      *  Display main categories page
      *
      * @return Response
-     */public function index(){
+     */
+    public function index(){
          // Get default language
          $defaultLanguage = default_language();
          // Get maincategory upon default language

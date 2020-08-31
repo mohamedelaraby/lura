@@ -44,9 +44,10 @@ return [
 
     // main categories
     'main_categories' => 'الاقسام الرئيسية',
-    'maincategory_name' => 'اسم القسم',
-    'maincategory_lang' => 'لغة القسم',
-    'maincategory_status' => 'حالة القسم',
+    'maincategory_name' => ' اللغة',
+    'maincategory_lang' => 'االختصار ',
+    'maincategory_status' => ' الحالة',
+    'maincategory_add' => ' اضافة قسم جديد',
 
 
 
