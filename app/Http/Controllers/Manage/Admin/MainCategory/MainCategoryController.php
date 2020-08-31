@@ -22,6 +22,15 @@ class MainCategoryController extends Controller
                                                         ->get();
 
         return view('admin.mainCategories.index',compact('mainCategories'));
-     }
+    }
 
+    /**
+     *  Form for creating new main category
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function create(){
+        $mainCategory = new MainCategory();
+        return view('admin.mainCategories.create',compact('mainCategory'));
+    }
 }

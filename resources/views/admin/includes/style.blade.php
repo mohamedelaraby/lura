@@ -39,6 +39,7 @@
 <!-- END Page Level CSS-->
 <!-- BEGIN Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css-rtl/style-rtl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/style.css')}}">
 <!-- END Custom CSS-->
 @notify_css
 @yield('style')

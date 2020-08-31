@@ -34,22 +34,31 @@ return [
     'lang_form_name' => 'اسم اللغة',
     'lang_form_enter_name' => 'ادخل اسم اللغة',
     'lang_form_abbre' => 'اختصار اللغة',
-    'lang_form_enter_abbre' => 'ادخل اختصار اللغة',
+    'lang_form_enter_abbre' => 'مثال:  ar',
     'lang_form_direction' => 'الاتجاه',
     'lang_form_enter_direction' => ' من فضلك  اختر اتجاه اللغة',
     'lang_form_rtl' => 'من اليمين الي اليسار',
     'lang_form_ltr' => 'من اليسار الي اليمين',
-
-
-
+    
+    
+    
     // main categories
     'main_categories' => 'الاقسام الرئيسية',
     'maincategory_name' => ' اللغة',
     'maincategory_lang' => 'االختصار ',
     'maincategory_status' => ' الحالة',
-    'maincategory_add' => ' اضافة قسم جديد',
-
-
+    'maincategory_add' => ' اضافة قسم رئيسي',
+    
+    // main categories form
+       'maincategory_data' => 'بيانات القسم',
+       'maincategory_form_name' => 'اسم القسم',
+       'maincategory_form_img' => 'صورة القسم',
+       'maincategory_form_enter_name' => 'مثال: ملابس',
+       'maincategory_form_direction' => 'الاتجاه',
+       'maincategory_form_enter_direction' => ' من فضلك  اختر اتجاه القسم',
+       'maincategory_form_rtl' => 'من اليمين الي اليسار',
+       'maincategory_form_ltr' => 'من اليسار الي اليمين',
+    
 
     // Interactive Buttons
     'status' => 'الحالة',
