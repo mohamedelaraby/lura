@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' =>  'http://localhost',
+    'url' =>  'http://localhost/lura',
 
     'asset_url' => env('ASSET_URL', null),
 

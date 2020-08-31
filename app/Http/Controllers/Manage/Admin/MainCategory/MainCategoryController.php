@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage\Admin\MainCategory;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MainCategoryRequest;
 use App\Models\MainCategory;
 use Illuminate\Http\Request;
 
@@ -32,5 +33,15 @@ class MainCategoryController extends Controller
     public function create(){
         $mainCategory = new MainCategory();
         return view('admin.mainCategories.create',compact('mainCategory'));
+    }
+    
+    /**
+     *  Store new main category
+     * 
+     * @param mixed| null App\Requests\MainCategoryRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(MainCategoryRequest $request){
+        return $request;
     }
 }

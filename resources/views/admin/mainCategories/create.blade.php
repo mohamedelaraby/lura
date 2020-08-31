@@ -43,7 +43,7 @@
                                 
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="" method="POST"
+                                    <form class="form" action="{{route('admin.maincategory.store')}}" method="POST"
                                               enctype="multipart/form-data">
 
                                             @include('admin.mainCategories.form')

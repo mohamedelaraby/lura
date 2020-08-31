@@ -54,6 +54,13 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        // Main Cateogry path
+        'maincategories' => [
+            'driver' => 'local',
+            'root' => base_path() . '/assets/images/maincategories/',
+            'url' => 'http://localhost/lura/public',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

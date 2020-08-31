@@ -204,28 +204,8 @@ if (!function_exists('datatable_lang')) {
 
 
 
-//[[[[[[[[ Validate Helper Functions]]]]]]]]
-
-/**
- *  Validate incoming Images Requests
- *  @param mixed|null $extension
- *  @return Response
- */
-if(!function_exists('validate_image')){
-    function validate_image($extension=null){
-        // If  no extension Then match image extension
-        if($extension === null){
-            return  'image|required|mimes:jpeg,png,jpg,gif,svg,bmp|max:2048';
-        } else {
-            // Use Image extension
-            return 'image|required|mimes:'.$extension;
-        }
-    }
 
 
-    //[[[[[[[[ Validate Helper Functions]]]]]]]]
-
-}
 /**
  *  Show session messages
  *
@@ -239,6 +219,38 @@ if(!function_exists('show_message')){
     }
 }
 
+/**
+ *  Upload images
+ * 
+ *  @param mixed| null $folder
+ *  @param mixed| null $image
+ * @return string
+ */
+if(!function_exists('uploadImage')){
+    function uploadImage($folder,$image){
+     $image->store('/',$folder);
+     $fileName = $image->hashName();
+     $path = 'images/' . $folder . '/'  .$fileName;
+     return $path;
+    }
+}
 
+/**
+ *  Validate incoming Images
+ * 
+ *  @param mixed|null $extension
+ *  @return Response
+ */
+if(!function_exists('validate_image')){
+    function validate_image($extension=null){
+        // If  no extension Then match image extension
+        if($extension === null){
+            return  'image|required|mimes:jpeg,png,jpg,gif,svg,bmp';  //|max:2048
+        } else {
+            // Use Image extension
+            return 'image|required|mimes:'.$extension;
+        }
+    }
+}
 
 ?>
