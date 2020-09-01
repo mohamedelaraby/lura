@@ -1,5 +1,4 @@
-
-
-// if(document.getElementById("switcheryColor4").checked) {
-//     document.getElementById('switcheryColor4Hidden').disabled = true;
-// }
+// Session flash message time
+setTimeout(function() {
+    $('.alert').fadeOut();
+    }, 3000);
