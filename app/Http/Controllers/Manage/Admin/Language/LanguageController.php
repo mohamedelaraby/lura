@@ -41,12 +41,12 @@ class LanguageController extends Controller
         try{
             Language::create($request->except(['_token']));
 
-            show_message('msg',trans('auth.language_add_success'));
+            show_message('msg',trans('auth.add'));
 
             return redirect()->route('admin.languages');
         } catch (Exception $exception){
 
-            show_message('error',trans('auth.language_add_failed'));
+            show_message('error',trans('auth.add'));
 
             return redirect()->route('admin.languages');
         }
@@ -61,7 +61,7 @@ class LanguageController extends Controller
     public function edit($id){
         $language = Language::select()->find($id);
         if(!$language){
-            show_message('error',trans('auth.language_not_found'));
+            show_message('error',trans('auth.not_found'));
             return redirect()->route('admin.languages');
         }
 
@@ -80,17 +80,17 @@ class LanguageController extends Controller
         try{
             $language = Language::find($id);
             if(!$language){
-                show_message('error',trans('auth.language_add_failed'));
+                show_message('error',trans('auth.failed'));
                 return redirect()->route('admin.languages.edit',$id);
             }
 
         //Update language
         $language->update($request->except("_token"));
-        show_message('msg',trans('auth.language_update_success'));
+        show_message('msg',trans('auth.update'));
         return redirect()->route('admin.languages');
 
         } catch (Exception $exception){
-                show_message('error',trans('auth.language_add_failed'));
+                show_message('error',trans('auth.add'));
                 return redirect()->route('admin.languages');
         }
     }
@@ -105,17 +105,17 @@ class LanguageController extends Controller
         try{
             $language = Language::find($id);
             if(!$language){
-                show_message('error',trans('auth.language_delete_failed'));
+                show_message('error',trans('auth.failed'));
                 return redirect()->route('admin.languages');
             }
 
         //Update language
         $language->delete();
-        show_message('msg',trans('auth.language_delete_success'));
+        show_message('msg',trans('auth.delete'));
         return redirect()->route('admin.languages');
 
         } catch (Exception $exception){
-                show_message('error',trans('auth.language_add_failed'));
+                show_message('error',trans('auth.failed'));
                 return redirect()->route('admin.languages');
         }
     }

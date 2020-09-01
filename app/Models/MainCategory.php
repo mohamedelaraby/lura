@@ -20,6 +20,19 @@ class MainCategory extends Model
      */
     protected $guarded = [];
 
+    /*****[ Start Accessors and Mutators ] ******/
+
+     /**
+      *  Obtain Main category Photo
+      *  
+      * @param string| null $value
+      * @return string
+      */
+    public function getPhotoAttribute($value){
+      return ($value != null) ? asset('/assets/'.$value): "";
+    }
+     
+    /*****[ End Accessors and Mutators ] ******/
 
     /*****[ Start Model Scopes ] ******/
 
@@ -57,5 +70,6 @@ class MainCategory extends Model
         return  $this->active  ? trans('auth.enabled') : trans('auth.disabled');
       }
       /*****[ End attributes ] ******/
+    
 
 }

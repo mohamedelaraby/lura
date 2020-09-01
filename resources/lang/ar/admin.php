@@ -44,8 +44,9 @@ return [
     
     // main categories
     'main_categories' => 'الاقسام الرئيسية',
-    'maincategory_name' => ' اللغة',
-    'maincategory_lang' => 'االختصار ',
+    'maincategory_name' => ' القسم',
+    'maincategory_lang' => 'الإختصار ',
+    'maincategory_photo' => 'الصورة ',
     'maincategory_status' => ' الحالة',
     'maincategory_add' => ' اضافة قسم رئيسي',
     
@@ -65,6 +66,8 @@ return [
     'options' => 'الاجراءات',
     'edit' => 'تعديل',
     'delete' => 'حذف',
+    'valid' => 'تفعيل',
+    'not-valid' => 'إلغاء التفعيل',
     'back' => 'تراجع',
     'save' => 'حفظ',
     'update' => 'تحديث',

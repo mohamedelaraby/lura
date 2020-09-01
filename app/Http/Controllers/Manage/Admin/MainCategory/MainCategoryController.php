@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Manage\Admin\MainCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MainCategoryRequest;
 use App\Models\MainCategory;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainCategoryController extends Controller
 {
@@ -42,6 +44,7 @@ class MainCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(MainCategoryRequest $request){
+        try{
         // Make  collect from request
         $mainCategory = collect($request->category);
 
@@ -58,6 +61,9 @@ class MainCategoryController extends Controller
 
         // return default category collect as array 
         $defaultCategory =  array_values($filter->all())[0];
+
+        /** Start data base transaction */
+        DB::beginTransaction();
 
         // Store default category by id
         $defaultCategoryId = MainCategory::insertGetId([
@@ -90,8 +96,40 @@ class MainCategoryController extends Controller
             // Insert into database
             MainCategory::insert($category_arr);
         }
+        // Complete database operations
+        DB::commit();
 
+        // Display masseges
+        show_message('msg',trans('auth.add'));
 
+        return redirect()->route('admin.maincategory');
+        
+    }catch(Exception $exception){
+        
+        // Do not do any database operations
+        DB::rollBack();
+        show_message('error',trans('auth.failed'));
+        return redirect()->route('admin.maincategory');
+        }
 
+    }
+
+    /**
+     *  Handle exceptions 
+     *  
+     * @return response
+     */
+    protected function handleErrors(){
+        try{
+            // Start database operations
+            DB::beginTransaction();
+            
+                # Code here
+            // Commit to database
+            DB::commit();
+        } catch (Exception $exception){
+            // Don`t insert into database
+            DB::rollBack();
+        }
     }
 }

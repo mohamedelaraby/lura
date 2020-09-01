@@ -45,11 +45,12 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <table
-                                        class="table display nowrap table-striped table-bordered ">
+                                        class="table display nowrap table-striped table-bordered scroll-horizontal">
                                         <thead>
                                         <tr>
                                             <th> {{ trans('admin.maincategory_name') }}</th>
                                             <th> {{ trans('admin.maincategory_lang') }}</th>
+                                            <th> {{ trans('admin.maincategory_photo') }}</th>
                                             <th> {{ trans('admin.maincategory_status') }}</th>
                                             <th> {{ trans('admin.options') }}</th>
 
@@ -63,7 +64,8 @@
 
                                                 <tr>
                                                     <td>{{ $mainCategory->name }} </td>
-                                                    <td>{{ $mainCategory->translation_lang }} </td>
+                                                    <td>{{ default_language()}} </td>
+                                                <td><img  class="thumb" src="{{$mainCategory->photo}}" alt="{{$mainCategory->photo}}"></td>
                                                     <td>{{ $mainCategory->getActive() }} </td>
 
                                                     <td>
@@ -76,6 +78,11 @@
                                                             <a href="{{ route('admin.maincategory.delete',$mainCategory->id) }}"
                                                                class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">
                                                                {{ trans('admin.delete') }}
+                                                            </a>
+                                                            
+                                                            <a href="#"
+                                                               class="btn btn-outline-warning btn-min-width box-shadow-3 mr-1 mb-1">
+                                                               {{ trans('admin.valid') }}
                                                             </a>
 
 

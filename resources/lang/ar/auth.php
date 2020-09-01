@@ -17,6 +17,13 @@ return [
     'signin' => 'دخول',
     /** End Admin Auth */
 
+    /** Dashboard messages*/
+    'enabled' => 'مفعل',
+    'disabled' => 'غير مفعل',
+    'add' => 'تم الإضافة بنجاح',
+    'update' => 'تم التحديث بنجاح',
+    'delete' => 'تم الحذف بنجاح',
+    'failed' => 'هناك خطأ ما, يرجي إعادة المحاولة',
 
     /** Start Languages */
     'required_field' => 'هذا الحقل مطلوب',
@@ -24,13 +31,7 @@ return [
     'string_name' => 'الحقل لابد ان يكون احرف',
     'string_max' => 'اسم اللغة لا يزيد عن 100 حرف',
     'string_max_abbr' => 'الاختصار لا يزيد عن 10 حرف',
-    'enabled' => 'مفعل',
-    'disabled' => 'غير مفعل',
-    'language_add_success' => 'تم إضافة اللغة بنجاح',
-    'language_add_failed' => 'هناك خطأ ما, يرجي إعادة المحاولة',
-    'language_update_success' => 'تم تحديث اللغة بنجاح',
-    'language_delete_success' => 'تم حذف اللغة بنجاح',
-    'language_not_found' => 'هذه اللغة غير موجودة',
+    'not_found' => 'هذه اللغة غير موجودة',
 
     /** End Languages */
 
