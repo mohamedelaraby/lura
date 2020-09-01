@@ -43,6 +43,7 @@
 
 <script src="{{asset('assets/admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/admin/js/scripts/photoscript.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/admin/js/scripts/commonActions.js')}}" type="text/javascript"></script>
 
 <script>
     $('#meridians1').timeDropper({

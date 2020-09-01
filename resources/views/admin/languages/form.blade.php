@@ -43,11 +43,20 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group {{$errors->has('active') ? 'has-error' : ''}} mt-1" >
-            <input type="checkbox" name="active" value="1"
+            <input type="checkbox" name="active" 
                    id="switcheryColor4"
                    class="switchery" data-color="success"
-                   @if($language->active == 1) checked @endif
-                   />
+                    @if($language->active == 1) value="0"  
+                     @else
+                     value="1"  checked
+                     @endif 
+                   /> 
+            {{-- <input type="hidden" name="active" value="0"
+                id="switcheryColor4Hidden"
+                class="switchery" data-color="success"
+                {{-- @if($language->active == 0) checked @endif --}}
+            
+
             <label for="switcheryColor4"
                    class="card-title ml-1">{{trans('admin.lang_status') }} </label> <br>
             <span class="text-danger">{{$errors->has('active') ? $errors->first('active') : ''}}</span>
@@ -55,4 +64,5 @@
     </div>
 </div>
 </div>
+
 
