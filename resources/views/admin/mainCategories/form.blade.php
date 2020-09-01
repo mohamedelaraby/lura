@@ -30,10 +30,10 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 hidden">
                             <div class="form-group">
                                 <label for="projectinput1">   {{trans('admin.lang_form_abbre')}} - {{trans('languages.' . $lang->abbreviation)}}</label>
-                                <input type="text" value="" id="name"
+                            <input type="text" value="{{$lang->abbreviation}}" id="name"
                                     class="form-control"
                                     placeholder="{{trans('admin.lang_form_enter_abbre')}}  "
                                     name="category[{{$index}}][abbreviation]">

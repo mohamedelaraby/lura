@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Manage\Admin\MainCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MainCategoryRequest;
 use App\Models\MainCategory;
-use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MainCategoryController extends Controller
@@ -44,72 +42,75 @@ class MainCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(MainCategoryRequest $request){
-        try{
-        // Make  collect from request
-        $mainCategory = collect($request->category);
+            try{
+            // Make  collect from request
+            $mainCategory = collect($request->category);
 
-        // Create filter to get data upon default lang
-        $filter = $mainCategory->filter(function($value,$key){
-            return $value['abbreviation'] == default_language();
-        });
 
-        // Upload image
-        $photoPath = '';
-        if($request->hasFile('photo')){
-            $photoPath = uploadImage('maincategories',$request->photo);
-        }
+            // Create filter to get data upon default lang
+            $filter = $mainCategory->filter(function($value){
+                return $value['abbreviation'] == default_language();
+            });
+        
+            // return default category collect as array 
+            $defaultCategory =  array_values($filter->all())[0];
 
-        // return default category collect as array 
-        $defaultCategory =  array_values($filter->all())[0];
-
-        /** Start data base transaction */
-        DB::beginTransaction();
-
-        // Store default category by id
-        $defaultCategoryId = MainCategory::insertGetId([
-            'translation_lang' =>$defaultCategory['abbreviation'],
-            'translation_of' =>0,
-            'name' =>$defaultCategory['name'],
-            'slug' =>$defaultCategory['name'],
-            'photo' =>$photoPath,
-        ]);
-
-        // Find non default language main categories
-        $categories =  $mainCategory->filter(function($value){
-            return $value['abbreviation'] != default_language();
-        });
-
-        // Check if there any non default categories
-        if(isset($categories) && $categories ->count()){
-            $category_arr = []; // Store any other non default catgories
-            // Store categroies into categories array
-            foreach($categories as $category){
-                $category_arr[] =[
-                    'translation_lang' =>$category['abbreviation'],
-                    'translation_of' =>$defaultCategoryId,
-                    'name' =>$category['name'],
-                    'slug' =>$category['name'],
-                    'photo' =>$photoPath,
-                ];
+            // Upload image
+            $photoPath = '';
+            if($request->hasFile('photo')){
+                $photoPath = uploadImage('maincategories',$request->photo);
             }
 
-            // Insert into database
-            MainCategory::insert($category_arr);
-        }
-        // Complete database operations
-        DB::commit();
+            /** Start data base transaction */
+            DB::beginTransaction();
 
-        // Display masseges
-        show_message('msg',trans('auth.add'));
+            // Store default category by id
+            $defaultCategoryId = MainCategory::insertGetId([
+                'translation_lang' =>$defaultCategory['abbreviation'],
+                'translation_of' =>0,
+                'name' =>$defaultCategory['name'],
+                'slug' =>$defaultCategory['name'],
+                'photo' =>$photoPath,
+            ]);
 
-        return redirect()->route('admin.maincategory');
-        
-    }catch(Exception $exception){
-        
-        // Do not do any database operations
-        DB::rollBack();
-        show_message('error',trans('auth.failed'));
-        return redirect()->route('admin.maincategory');
+            // Find non default language main categories
+            $categories =  $mainCategory->filter(function($value){
+                return $value['abbreviation'] != default_language();
+            });
+
+            
+
+            // Check if there any non default categories
+            if(isset($categories) && $categories ->count()){
+                $category_arr = []; // Store any other non default catgories
+                // Store categroies into categories array
+                foreach($categories as $category){
+                    $category_arr [] = [ 
+                        'translation_lang' =>$category['abbreviation'],
+                        'translation_of' =>$defaultCategoryId,
+                        'name' =>$category['name'],
+                        'slug' =>$category['name'],
+                        'photo' =>$photoPath,
+                    ];
+                }
+
+                // Insert into database
+                MainCategory::insert($category_arr);
+                // Complete database operations
+            }
+            DB::commit();
+
+            // Display masseges
+            show_message('msg',trans('auth.add'));
+
+            return redirect()->route('admin.maincategory');
+            
+        } catch(\Exception $exception){
+            
+            // Do not do any database operations
+            DB::rollBack();
+            show_message('error',trans('auth.failed'));
+            return redirect()->route('admin.maincategory');
         }
 
     }
@@ -127,7 +128,7 @@ class MainCategoryController extends Controller
                 # Code here
             // Commit to database
             DB::commit();
-        } catch (Exception $exception){
+        } catch (\Exception $exception){
             // Don`t insert into database
             DB::rollBack();
         }
