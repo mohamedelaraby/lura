@@ -115,6 +115,73 @@ class MainCategoryController extends Controller
 
     }
 
+
+      /**
+     *  Display update element view
+     *
+     *  @param  mixed $id
+     * @return Response
+     */
+    public function edit($id){
+        $mainCategory = MainCategory::select()->find($id);
+        if(!$mainCategory){
+            show_message('error',trans('auth.not_found'));
+            return redirect()->route('admin.maincategory');
+        }
+
+        return view('admin.maincategories.edit',compact('mainCategory'));
+    }
+
+    // /**
+    //  *  Update existing language
+    //  *
+    //  *  @param  Response $request
+    //  *  @param  mixed $id
+    //  */
+    // public function update(LanguageRequest $request,$id){
+    //     try{
+    //         $language = Language::find($id);
+    //         if(!$language){
+    //             show_message('error',trans('auth.failed'));
+    //             return redirect()->route('admin.languages.edit',$id);
+    //         }
+
+    //     //Update language
+    //     $language->update($request->except("_token"));
+    //     show_message('msg',trans('auth.update'));
+    //     return redirect()->route('admin.languages');
+
+    //     } catch (Exception $exception){
+    //             show_message('error',trans('auth.add'));
+    //             return redirect()->route('admin.languages');
+    //     }
+    // }
+
+    /**
+     *  Delete existing language
+     *
+     *  @param  Response $request
+     *  @param  mixed $id
+     */
+    // public function delete($id){
+    //     try{
+    //         $language = Language::find($id);
+    //         if(!$language){
+    //             show_message('error',trans('auth.failed'));
+    //             return redirect()->route('admin.languages');
+    //         }
+
+    //     //Update language
+    //     $language->delete();
+    //     show_message('msg',trans('auth.delete'));
+    //     return redirect()->route('admin.languages');
+
+    //     } catch (\Exception $exception){
+    //             show_message('error',trans('auth.failed'));
+    //             return redirect()->route('admin.languages');
+    //     }
+    // }
+
     /**
      *  Handle exceptions 
      *  

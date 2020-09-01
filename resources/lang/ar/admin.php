@@ -59,6 +59,7 @@ return [
     'maincategory_form_enter_direction' => ' من فضلك  اختر اتجاه القسم',
     'maincategory_form_rtl' => 'من اليمين الي اليسار',
     'maincategory_form_ltr' => 'من اليسار الي اليمين',
+    'maincategory_edit' => 'تعديل قسم',
     
 
     // Interactive Buttons

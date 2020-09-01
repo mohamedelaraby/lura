@@ -11,9 +11,9 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ trans('admin.dashboard') }} </a>
                             </li>
-                            <li class="breadcrumb-item active"><a href="{{route('admin.languages')}}"> {{ trans('admin.languages') }} </a>
+                            <li class="breadcrumb-item active"><a href="{{route('admin.languages')}}"> {{ trans('admin.main_categories') }} </a>
                             </li>
-                            <li class="breadcrumb-item"> {{ trans('admin.lang_edit') }}
+                            <li class="breadcrumb-item"> {{ trans('admin.maincategory_edit') }} - {{$mainCategory->name}}
                             </li>
                         </ol>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="basic-layout-form"> {{ trans('admin.lang_edit') }} </h4>
+                                <h4 class="card-title" id="basic-layout-form"> {{ trans('admin.maincategory_edit') }} - {{$mainCategory->name}} </h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -42,11 +42,11 @@
                             @include('admin.includes.alerts.messages')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('admin.languages.update',$language->id) }}" method="POST"
+                                    <form class="form" action="{{ route('admin.languages.update',$mainCategory->id) }}" method="POST"
                                           enctype="multipart/form-data">
                                         <div class="form-body">
 
-                                            @include('admin.languages.form')
+                                            @include('admin.mainCategories.editform')
 
                                         <div class="form-actions">
                                             <button type="button" class="btn btn-warning mr-1"
