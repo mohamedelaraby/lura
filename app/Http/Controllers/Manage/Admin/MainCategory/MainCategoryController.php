@@ -60,18 +60,37 @@ class MainCategoryController extends Controller
         $defaultCategory =  array_values($filter->all())[0];
 
         // Store default category by id
-        // $defaultCategoryId = MainCategory::insertGetId([
-        //     'translation_lang' =>$defaultCategory['abbreviation'],
-        //     'translation_of' =>0,
-        //     'name' =>$defaultCategory['name'],
-        //     'slug' =>$defaultCategory['name'],
-        //     'photo' =>$photoPath,
-        // ]);
+        $defaultCategoryId = MainCategory::insertGetId([
+            'translation_lang' =>$defaultCategory['abbreviation'],
+            'translation_of' =>0,
+            'name' =>$defaultCategory['name'],
+            'slug' =>$defaultCategory['name'],
+            'photo' =>$photoPath,
+        ]);
 
         // Find non default language main categories
-        return $filter =  $mainCategory->filter(function($value){
+        $categories =  $mainCategory->filter(function($value){
             return $value['abbreviation'] != default_language();
         });
+
+        // Check if there any non default categories
+        if(isset($categories) && $categories ->count()){
+            $category_arr = []; // Store any other non default catgories
+            // Store categroies into categories array
+            foreach($categories as $category){
+                $category_arr[] =[
+                    'translation_lang' =>$category['abbreviation'],
+                    'translation_of' =>$defaultCategoryId,
+                    'name' =>$category['name'],
+                    'slug' =>$category['name'],
+                    'photo' =>$photoPath,
+                ];
+            }
+
+            // Insert into database
+            MainCategory::insert($category_arr);
+        }
+
 
 
     }
