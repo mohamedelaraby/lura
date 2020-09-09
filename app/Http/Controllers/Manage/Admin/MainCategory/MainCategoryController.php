@@ -132,30 +132,31 @@ class MainCategoryController extends Controller
         return view('admin.maincategories.edit',compact('mainCategory'));
     }
 
-    // /**
-    //  *  Update existing language
-    //  *
-    //  *  @param  Response $request
-    //  *  @param  mixed $id
-    //  */
-    // public function update(LanguageRequest $request,$id){
-    //     try{
-    //         $language = Language::find($id);
-    //         if(!$language){
-    //             show_message('error',trans('auth.failed'));
-    //             return redirect()->route('admin.languages.edit',$id);
-    //         }
+    /**
+     *  Update existing language
+     *
+     *  @param  Response $request
+     *  @param  mixed $id
+     */
+    public function update(MainCategoryRequest $request,$id){
+        try{
+            $maincategory = MainCategory::find($id);
+            if(!$maincategory){
+                show_message('error',trans('auth.failed'));
+                return redirect()->route('admin.maincategory.edit',$id);
+            }
 
-    //     //Update language
-    //     $language->update($request->except("_token"));
-    //     show_message('msg',trans('auth.update'));
-    //     return redirect()->route('admin.languages');
+        
+        //Update maincategory
+        $maincategory->update($request->except("_token"));
+        show_message('msg',trans('auth.update'));
+        return redirect()->route('admin.maincategory');
 
-    //     } catch (Exception $exception){
-    //             show_message('error',trans('auth.add'));
-    //             return redirect()->route('admin.languages');
-    //     }
-    // }
+        } catch (\Exception $exception){
+                show_message('error',trans('auth.add'));
+                return redirect()->route('admin.maincategory');
+        }
+    }
 
     /**
      *  Delete existing language

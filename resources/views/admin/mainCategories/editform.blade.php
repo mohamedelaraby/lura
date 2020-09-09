@@ -1,5 +1,5 @@
 ﻿        @csrf
-        
+    <input type="hidden" name="id" value="{{$mainCategory->id}}">
         <div class="form-group">
             <div class="text-center">
             <img src="{{$mainCategory->photo}}" alt="{{trans('admin.main_categories_photo')}}" class="rounded-circel height-150">
@@ -19,9 +19,9 @@
 
         <div class="form-body">
             <h4 class="form-section"><i class="ft-home"></i>  {{trans('admin.maincategory_data')}} </h4>
-            
-            {{-- Display form inputs upon active  languages --}}
-    
+
+
+
                 <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -29,7 +29,7 @@
                             <input type="text" value="{{$mainCategory->name}}" id="name"
                                     class="form-control"
                                     placeholder="{{trans('admin.maincategory_form_enter_name')}} "
-                                    name="category[][name]">
+                                    name="category[0][name]">
                                     @error("category.0.name")
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -42,31 +42,34 @@
                             <input type="text" value="{{$mainCategory->translation_lang}}" id="name"
                                     class="form-control"
                                     placeholder="{{trans('admin.lang_form_enter_abbre')}}  "
-                                    name="category[][abbreviation]">
-                                
+                                    name="category[0][abbreviation]">
+
                                 @error("category.0.abbreviation")
                                     <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
                         </div>
                 </div>
-        
+
                 <div class="row">
                         <div class="col-md-6">
                             <div class="form-group  mt-1" >
-                                <input type="checkbox" name="category[][active]" value="1"
+                                <input type="checkbox" name="category[0][active]"
                                     id="switcheryColor4"
                                     class="switchery" data-color="success"
-                                    @if($mainCategory->active == 1) checked @endif
+                                    @if($mainCategory->active == 1) checked value="1"
+                                    @else
+
+                                    @endif
                                     />
                                 <label for="switcheryColor4"
                                     class="card-title ml-1">  {{trans('admin.lang_status') }} - {{trans('languages.' . $mainCategory->translation_lang)}} </label> <br>
                                 @error("category.0.active")
                                     <span class="text-danger">{{$message}}</span>
-                                @enderror                            
+                                @enderror
                             </div>
                         </div>
                 </div>
-         
+
         </div>
 

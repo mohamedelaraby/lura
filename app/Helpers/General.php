@@ -245,10 +245,10 @@ if(!function_exists('validate_image')){
     function validate_image($extension=null){
         // If  no extension Then match image extension
         if($extension === null){
-            return  'image|required|mimes:jpeg,png,jpg,gif,svg,bmp';  //|max:2048
+            return  'image|required_without:id|mimes:jpeg,png,jpg,gif,svg,bmp';  //|max:2048
         } else {
             // Use Image extension
-            return 'image|required|mimes:'.$extension;
+            return 'image|required_without:id|mimes:'.$extension;
         }
     }
 }
