@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 
+@section('title')
+{{ trans('admin.main_categories') }}
+@endsection
 @section('content')
 
 <div class="app-content content">

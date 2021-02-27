@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
  */
 define('PAGINATION_COUNT',10);
 
-Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => 'guest:admin'], function () {
 
     // Admin Authuntication
     Route::get('login', 'AdminController@index')->name('admin.get_login');
@@ -21,12 +21,12 @@ Route::group(['namespace' => 'Manage\Admin', 'middleware' => 'guest:admin'], fun
 });
 
 
-Route::group(['namespace' => 'Manage\Admin'], function () {
+Route::group(['namespace' => 'Admin'], function () {
     Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
 
     ##########################[ Begin Language routes ]########################
 
-    Route::group(['prefix' => 'language','namespace' =>'Language'], function(){
+    Route::group(['prefix' => 'language'], function(){
 
         Route::get('/','LanguageController@index')->name('admin.languages');
         Route::get('create','LanguageController@create')->name('admin.languages.create');
@@ -41,7 +41,7 @@ Route::group(['namespace' => 'Manage\Admin'], function () {
 
     ##########################[ Begin Main Category routes ]########################
 
-    Route::group(['prefix' => 'maincategory','namespace' =>'MainCategory'], function(){
+    Route::group(['prefix' => 'maincategory'], function(){
 
         Route::get('/','MainCategoryController@index')->name('admin.maincategory');
         Route::get('create','MainCategoryController@create')->name('admin.maincategory.create');

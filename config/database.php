@@ -48,7 +48,7 @@ return [
             'url' => '',
             'host' =>  '127.0.0.1',
             'port' =>  '3306',
-            'database' => 'store',
+            'database' => 'lura',
             'username' => 'root',
             'password' => '',
             'unix_socket' => env('DB_SOCKET', ''),
